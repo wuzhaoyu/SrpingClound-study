@@ -91,7 +91,6 @@ public class UserService {
     public List<User> findAll() {
         return userDao.findAll();
     }
-
     /*** 根据手机号和密码查询用户 * @param mobile * @param password * @return */
     public User findByMobileAndPassword(String mobile, String password) {
         User user = userDao.findByMobile(mobile);
@@ -145,7 +144,7 @@ public class UserService {
      * @param user
      */
     public void add(User user) {
-        // user.setId( idWorker.nextId()+"" ); 雪花分布式ID生成器
+         user.setId( idWorker.nextId()+"" ); //雪花分布式ID生成器
         userDao.save(user);
     }
 
