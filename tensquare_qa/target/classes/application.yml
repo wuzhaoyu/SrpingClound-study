@@ -14,3 +14,9 @@ spring:
 jwt:
   config:
     key: first
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance: #支持模块跨域请求
+    prefer-ip-address: true

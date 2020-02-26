@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import util.IdWorker;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -101,6 +102,19 @@ public class UserService {
         }
     }
 
+    /**
+     *
+     * @param userid
+     * @param friendid
+     * @param x
+     */
+    @Transactional
+    public void incFansFollowCount(String userid,String friendid,int x){
+        //对方粉丝数增加一个，我的关注数也加一
+        userDao.incFanscount(friendid,x);
+        userDao.incFollowcount(userid,x);
+
+    }
 
     /**
      * 条件查询+分页

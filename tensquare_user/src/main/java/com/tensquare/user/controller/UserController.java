@@ -44,6 +44,12 @@ public class UserController {
     private JwtUtil jwtUtil;
 
 
+    /*** 好友的粉丝数增加 增加用户自己关注数增加  * @param userid * @param x */
+    @RequestMapping(value = "/incFansFollowCount/{userid}/{friendid}/{x}", method = RequestMethod.POST)
+    public void incFansFollowCount(@PathVariable String userid, @PathVariable String friendid, @PathVariable int x) {
+        userService.incFansFollowCount(userid,friendid, x);
+    }
+
     /**
      * 用户登陆
      *

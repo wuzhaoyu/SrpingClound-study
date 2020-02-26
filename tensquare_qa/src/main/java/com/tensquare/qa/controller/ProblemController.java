@@ -3,6 +3,7 @@ package com.tensquare.qa.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.tensquare.qa.client.BaseClient;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,16 @@ public class ProblemController {
 
     @Autowired
     private HttpServletRequest httpServletRequest;
+
+    @Autowired
+    private BaseClient baseClient;
+
+    /*** 根据ID查询标签 * @param id * @return */
+    @RequestMapping(value = "/label/{id}", method = RequestMethod.GET)
+    public Result findLabelById(@PathVariable("id") String id) {
+        Result byId = baseClient.findById(id);
+        return byId;
+    }
 
     /*** 根据标签ID查询最新问题列表 * @param labelid * @return */
     @RequestMapping(value = "/newlist/{labelid}/{page}/{size}", method = RequestMethod.GET)

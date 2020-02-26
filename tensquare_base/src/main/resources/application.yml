@@ -4,7 +4,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: tensquare-com.tenquare.base #指定服务名称
+    name: tensquare-base #指定服务名称
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tensquare_base?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
@@ -13,3 +13,9 @@ spring:
   jpa:
     database: MYSQL
     show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance: #支持模块跨域请求
+    prefer-ip-address: true
