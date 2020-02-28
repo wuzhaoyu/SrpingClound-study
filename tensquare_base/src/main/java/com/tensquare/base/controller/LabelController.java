@@ -7,31 +7,45 @@ import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
  * 类功能说明:标签控制层
  * 类修改者	创建日期2020/2/9
  * 修改说明
- *
+ *  @RefreshScope 配置文件在更新重新加载时只会加载系统原生的属性
+ *   不会加载自定义配置文件 该注解可以刷新使其生效
  * @author wzy
  * @version V1.0
  **/
 @RestController
 @CrossOrigin
 @RequestMapping("/label")
+@RefreshScope
 public class LabelController {
     @Autowired
     private LabelService labelService;
 
+    @Autowired
+    private HttpServletRequest request;
+
+    @Value("${ip}")
+    private String ip;
+
     /*** 查询全部列表 * @return */
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll() {
+        System.out.println("IP地址"+ ip);
+        String authorization = request.getHeader("Authorization");
+        System.out.println(authorization);
         return new Result(true, StatusCode.OK, "查询成功", labelService.findAll());
     }
 
@@ -81,4 +95,4 @@ public class LabelController {
         return new Result(true, StatusCode.OK, "查询成功", new PageResult<Label>(pageList.getTotalElements(), pageList.getContent()));
 
     }
-    }
+}

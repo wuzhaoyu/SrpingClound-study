@@ -20,3 +20,6 @@ eureka:
       defaultZone: http://127.0.0.1:6868/eureka/
   instance: #支持模块跨域请求
     prefer-ip-address: true
+feign: #开启熔断器
+  hystrix:
+    enabled: true

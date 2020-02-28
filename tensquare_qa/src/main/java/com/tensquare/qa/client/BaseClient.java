@@ -1,5 +1,6 @@
 package com.tensquare.qa.client;
 
+import com.tensquare.qa.client.impl.BaseClientImpl;
 import entity.Result;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author wzy
  * @version V1.0
  **/
-@FeignClient(value = "tensquare-base")
+@FeignClient(value = "tensquare-base",fallback = BaseClientImpl.class)
 public interface BaseClient {
 
     /*** 根据ID查询标签 * @param id * @return */
