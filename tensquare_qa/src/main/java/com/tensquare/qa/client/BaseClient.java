@@ -21,5 +21,5 @@ public interface BaseClient {
 
     /*** 根据ID查询标签 * @param id * @return */
     @RequestMapping(value = "/label/{id}", method = RequestMethod.GET)
-     Result findById(@PathVariable("id") String id) ;
+    Result findById(@PathVariable("id") String id) ;
 }

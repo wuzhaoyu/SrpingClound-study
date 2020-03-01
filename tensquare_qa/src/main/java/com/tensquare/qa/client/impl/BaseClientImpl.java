@@ -17,6 +17,6 @@ import org.springframework.stereotype.Component;
 public class BaseClientImpl implements BaseClient {
     @Override
     public Result findById(String id) {
-        return new Result(false, StatusCode.ERROR,"熔断器触发了");
+        return new Result(false, StatusCode.ERROR,"熔断器触发了,tensquare-base服务降级");
     }
 }
