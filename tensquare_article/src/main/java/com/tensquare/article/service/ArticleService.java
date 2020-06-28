@@ -5,12 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
+import javax.persistence.criteria.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -147,13 +142,14 @@ public class ArticleService {
 			@Override
 			public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				List<Predicate> predicateList = new ArrayList<Predicate>();
+
                 // ID
                 if (searchMap.get("id")!=null && !"".equals(searchMap.get("id"))) {
                 	predicateList.add(cb.like(root.get("id").as(String.class), "%"+(String)searchMap.get("id")+"%"));
                 }
                 // 专栏ID
                 if (searchMap.get("columnid")!=null && !"".equals(searchMap.get("columnid"))) {
-                	predicateList.add(cb.like(root.get("columnid").as(String.class), "%"+(String)searchMap.get("columnid")+"%"));
+                	predicateList.add(cb.equal(root.get("columnid").as(String.class), searchMap.get("columnid")));
                 }
                 // 用户ID
                 if (searchMap.get("userid")!=null && !"".equals(searchMap.get("userid"))) {

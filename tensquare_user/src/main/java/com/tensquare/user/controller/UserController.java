@@ -7,12 +7,7 @@ import java.util.Map;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tensquare.user.pojo.User;
 import com.tensquare.user.service.UserService;
@@ -52,20 +47,22 @@ public class UserController {
 
     /**
      * 用户登陆
-     *
-     * @param mobile
-     * @param password
+     * @param loginUser
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Result login(String mobile, String password) {
+    public Result login(@RequestBody User loginUser ) {
+        String mobile = loginUser.getMobile();
+        String password = loginUser.getPassword();
         User user = userService.findByMobileAndPassword(mobile, password);
         if (user != null) {
             String token = jwtUtil.createJWT(user.getId(),
                     user.getNickname(), "user");
             Map map = new HashMap();
             map.put("token", token);
-            map.put("roles", "admin");//昵称
+            map.put("roles", "user");
+            map.put("name", user.getNickname());//昵称
+            map.put("avatar", user.getAvatar());//头像
             return new Result(true, StatusCode.OK, "登陆成功", map);
         } else {
             return new Result(false, StatusCode.LOGINERROR, "用户名或密码错误");

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 类功能说明:
+ * 类功能说明: feign的服务调用
+ *   指定回调实现 BaseClientImpl
  * 类修改者	创建日期2020/2/26
  * 修改说明
- *
  * @author wzy
  * @version V1.0
  **/

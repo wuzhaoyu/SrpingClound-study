@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -49,15 +50,23 @@ public class AdminController {
         Admin adminLogin = adminService.login(admin);
         if (admin == null) {
             return new Result(false, StatusCode.LOGINERROR, "用户名或密码错误");
-
         }
         String token = jwtUtil.createJWT(adminLogin.getId(), adminLogin.getLoginname(), "admin");
         Map map = new HashMap();
         map.put("token", token);
-        map.put("role", "admin");
+        map.put("roles", "admin");
+        map.put("name", admin.getLoginname());
+        map.put("id", adminLogin.getId());
         return new Result(true, StatusCode.OK, "登陆成功",map);
     }
-
+    /**
+     * 退出登陆
+     * @return
+     */
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public Result logout() {
+        return new Result(true, StatusCode.EXPIRE, "退出登陆");
+    }
     /**
      * 查询全部数据
      *
@@ -77,6 +86,21 @@ public class AdminController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Result findById(@PathVariable String id) {
         return new Result(true, StatusCode.OK, "查询成功", adminService.findById(id));
+    }
+
+     /**
+     * 根据ID查询
+     * @param  id
+     * @return
+     */
+    @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
+    public Result info(@PathVariable String id) {
+        Admin admin = adminService.findById(id);
+        Map map = new HashMap();
+        map.put("roles", "admin");
+        map.put("name", admin.getLoginname());
+        map.put("avatar", null);
+        return new Result(true, StatusCode.OK, "查询成功",map);
     }
 
 

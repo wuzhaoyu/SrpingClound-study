@@ -6,7 +6,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/
+      defaultZone: http://127.0.0.1:6660/eureka/
 zuul:
   routes:
     tensquare-gathering: #活动

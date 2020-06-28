@@ -1,5 +1,8 @@
 package com.tensquare.qa.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import common.Contant;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,7 +23,10 @@ public class Problem implements Serializable{
 	
 	private String title;//标题
 	private String content;//内容
+
+	@JsonFormat(pattern = Contant.FULL_DATE_PATTERN)
 	private java.util.Date createtime;//创建日期
+	@JsonFormat(pattern = Contant.FULL_DATE_PATTERN)
 	private java.util.Date updatetime;//修改日期
 	private String userid;//用户ID
 	private String nickname;//昵称
@@ -29,6 +35,7 @@ public class Problem implements Serializable{
 	private Long reply;//回复数
 	private String solve;//是否解决
 	private String replyname;//回复人昵称
+	@JsonFormat(pattern = Contant.FULL_DATE_PATTERN)
 	private java.util.Date replytime;//回复日期
 
 	

@@ -22,7 +22,7 @@ jwt:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/
+      defaultZone: http://127.0.0.1:6660/eureka/
   instance: #支持模块跨域请求 显示主机IP
     prefer-ip-address: true
 info:

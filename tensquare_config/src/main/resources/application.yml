@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/wuzhaoyu/Config-Center.git
+          uri: https://github.com/wuzhaoyu/Config-Center.git # git服务器上寻找配置文件
   rabbitmq:
     host: 127.0.0.1
 server:

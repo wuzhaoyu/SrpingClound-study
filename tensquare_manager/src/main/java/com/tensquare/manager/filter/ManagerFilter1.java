@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @author wzy
  * @version V1.0
  **/
-@Component
 public class ManagerFilter1 extends ZuulFilter {
     /**
      * pre ：可以在请求被路由之前调用

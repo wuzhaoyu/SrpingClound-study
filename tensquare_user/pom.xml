@@ -59,12 +59,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
+				<!--<configuration>
 					<useDefaultDelimiters>false</useDefaultDelimiters>
 					<delimiters>
 						<delimit>$[*]</delimit>
 					</delimiters>
-				</configuration>
+				</configuration>-->
 			</plugin>
 		</plugins>
 	</build>

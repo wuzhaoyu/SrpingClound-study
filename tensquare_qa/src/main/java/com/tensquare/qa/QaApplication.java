@@ -8,6 +8,13 @@ import org.springframework.context.annotation.Bean;
 import util.IdWorker;
 import util.JwtUtil;
 
+/**
+ * @Author wzy
+ * @Description  问答模块
+ *  EnableDiscoveryClient ： 发现服务
+ *  EnableFeignClients ： 使用feign方式发现
+ * @Date:   2020/6/18 19:51
+ **/
 @SpringBootApplication
 @EnableEurekaClient
 @EnableDiscoveryClient

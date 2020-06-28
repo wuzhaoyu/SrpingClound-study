@@ -125,6 +125,7 @@ public class EnterpriseService {
             @Override
             public Predicate toPredicate(Root<Enterprise> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> predicateList = new ArrayList<Predicate>();
+
                 // ID
                 if (searchMap.get("id") != null && !"".equals(searchMap.get("id"))) {
                     predicateList.add(cb.like(root.get("id").as(String.class), "%" + (String) searchMap.get("id") + "%"));

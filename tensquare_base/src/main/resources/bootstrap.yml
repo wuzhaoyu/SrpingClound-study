@@ -1,9 +1,9 @@
 spring:
   cloud:
-    config:
+    config: #关联config base文件 dev结尾
       name: base
       profile: dev
-      label: master
+      label: master # 主干上的文件
       uri: http://127.0.0.1:12000
     refresh:
       extra-refreshable: none

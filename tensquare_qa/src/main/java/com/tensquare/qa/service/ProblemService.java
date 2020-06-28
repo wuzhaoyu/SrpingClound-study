@@ -45,7 +45,7 @@ public class ProblemService {
 	 * @return
 	 */
 	public Page<Problem> newList(String labelId, int page,int size){
-		return problemDao.newList(labelId,PageRequest.of(page,size));
+		return problemDao.newList(labelId,PageRequest.of(page-1 ,size));
 	};
 
 	/**
@@ -53,7 +53,7 @@ public class ProblemService {
 	 * @return
 	 */
 	public Page<Problem> hotList(String labelId,  int page,int size){
-		return problemDao.hotList(labelId,PageRequest.of(page,size));
+		return problemDao.hotList(labelId,PageRequest.of(page -1,size));
 	};
 
 	/**
@@ -61,7 +61,7 @@ public class ProblemService {
 	 * @return
 	 */
 	public Page<Problem> waitList(String labelId, int page,int size){
-		return problemDao.waitList(labelId,PageRequest.of(page,size));
+		return problemDao.waitList(labelId,PageRequest.of(page -1,size));
 	};
 	/**
 	 * 查询全部列表

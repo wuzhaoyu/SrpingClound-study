@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * 类功能说明:
+ * 类功能说明: 负责管理应用的配置文件
  * 类修改者	创建日期2020/2/27
  * 修改说明
  *

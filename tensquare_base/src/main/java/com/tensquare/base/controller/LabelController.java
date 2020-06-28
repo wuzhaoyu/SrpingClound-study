@@ -88,6 +88,17 @@ public class LabelController {
         return new Result(true, StatusCode.OK, "查询成功", labelService.findSearch(label));
     }
 
+    /*** 根据条件查询 推荐置顶label
+     * * @param searchMap
+     * * @return
+     * */
+    @RequestMapping(value = "/toplist", method = RequestMethod.POST)
+    public Result toplist(@RequestBody Label label) {
+        // 可推荐
+        label.setRecommend("1");
+        return new Result(true, StatusCode.OK, "查询成功", labelService.findSearch(label));
+    }
+
     /*** 条件+分页查询 * @param searchMap * @param page * @param size * @return */
     @RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)
     public Result findSearch(@RequestBody Label label, @PathVariable int page, @PathVariable int size) {

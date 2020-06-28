@@ -6,10 +6,9 @@ import entity.StatusCode;
 import org.springframework.stereotype.Component;
 
 /**
- * 类功能说明:
+ * 类功能说明: 服务调用的回调实现 触发熔断器
  * 类修改者	创建日期2020/2/28
  * 修改说明
- *
  * @author wzy
  * @version V1.0
  **/

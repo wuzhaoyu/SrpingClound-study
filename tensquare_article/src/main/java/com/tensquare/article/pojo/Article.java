@@ -1,5 +1,8 @@
 package com.tensquare.article.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import common.Contant;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -18,11 +21,12 @@ public class Article implements Serializable{
 
 
 	
-	private String columnid;//专栏ID
+	private Integer columnid;//专栏ID
 	private String userid;//用户ID
 	private String title;//标题
 	private String content;//文章正文
 	private String image;//文章封面
+	@JsonFormat(pattern = Contant.FULL_DATE_PATTERN)
 	private java.util.Date createtime;//发表日期
 	private java.util.Date updatetime;//修改日期
 	private String ispublic;//是否公开
@@ -43,10 +47,12 @@ public class Article implements Serializable{
 		this.id = id;
 	}
 
-	public String getColumnid() {
+
+	public Integer getColumnid() {
 		return columnid;
 	}
-	public void setColumnid(String columnid) {
+
+	public void setColumnid(Integer columnid) {
 		this.columnid = columnid;
 	}
 

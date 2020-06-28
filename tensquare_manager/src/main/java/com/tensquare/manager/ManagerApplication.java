@@ -8,10 +8,9 @@ import org.springframework.context.annotation.Bean;
 import util.JwtUtil;
 
 /**
- * 类功能说明:
+ * 类功能说明:  网关服务 路由转发
  * 类修改者	创建日期2020/2/27
- * 修改说明
- *
+ *   EnableZuulProxy ： 网关代理
  * @author wzy
  * @version V1.0
  **/

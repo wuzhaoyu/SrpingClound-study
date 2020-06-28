@@ -7,6 +7,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import util.IdWorker;
 import util.JwtUtil;
 
+/**
+ * @Author wzy 交友服务
+ * @Description
+ * @Date:   2020/6/18 19:33
+ **/
 @SpringBootApplication
 @EnableEurekaClient
 public class UserApplication {

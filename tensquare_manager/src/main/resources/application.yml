@@ -6,7 +6,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/
+      defaultZone: http://127.0.0.1:6660/eureka/
+  instance: #支持模块跨域请求 显示主机IP
+    prefer-ip-address: true
 zuul:
   routes:
     tensquare-gathering: #活动
@@ -33,6 +35,11 @@ zuul:
     tensquare-user: #用户
       path: /user/** #配置请求URL的请求规则
       serviceId: tensquare-user #指定Eureka注册中心中的服务id
+  host:
+    max-per-route-connections: 10000
+    max-total-connections: 10000
+  semaphore:
+    max-semaphores: 200
 jwt:
   config:
     key: first
